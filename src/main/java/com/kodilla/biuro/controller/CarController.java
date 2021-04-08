@@ -3,11 +3,9 @@ package com.kodilla.biuro.controller;
 import com.kodilla.biuro.domain.CarDto;
 import com.kodilla.biuro.mapper.CarMapper;
 import com.kodilla.biuro.service.CarDatabase;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,8 +23,8 @@ public class CarController {
         this.carMapper = carMapper;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getCars")
-    public List<CarDto> getAvailableCars() {
+    @RequestMapping(method = RequestMethod.GET, value = "/getCars")
+    public List<CarDto> getCars() {
         return carMapper.mapToCarDtoList(carDatabase.getCars());
     }
 

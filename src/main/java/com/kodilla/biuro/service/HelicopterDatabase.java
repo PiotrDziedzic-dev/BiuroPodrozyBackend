@@ -1,27 +1,23 @@
 package com.kodilla.biuro.service;
 
-
 import com.kodilla.biuro.domain.Car;
-import com.kodilla.biuro.domain.CarDto;
-import com.kodilla.biuro.repository.CarRepository;
+import com.kodilla.biuro.domain.Helicopter;
+import com.kodilla.biuro.repository.HelicopterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 @RequiredArgsConstructor
-public class CarDatabase {
+public class HelicopterDatabase {
 
     @Autowired
-    private CarRepository carRepository;
+    HelicopterRepository helicopterRepository;
 
-
-    public List<Car> getCars() {
-        return carRepository.findAll();
+    public List<Helicopter> getHelicopters() {
+        return helicopterRepository.findAll();
     }
-
 
 }

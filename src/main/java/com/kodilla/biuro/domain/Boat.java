@@ -15,15 +15,15 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "CARS")
-public class Car {
+@Table(name = "BOATS")
+public class Boat {
 
 
     @Id
     @GeneratedValue
     @NotNull
     @Column
-    private Long carId;
+    private Long boatId;
 
     @Column
     private String brand;
