@@ -4,10 +4,7 @@ import com.kodilla.biuro.domain.BoatDto;
 import com.kodilla.biuro.domain.HelicopterDto;
 import com.kodilla.biuro.mapper.HelicopterMapper;
 import com.kodilla.biuro.service.HelicopterDatabase;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,14 @@ public class HelicopterController {
     @RequestMapping(method = RequestMethod.GET, value = "/getHelicopters")
     public List<HelicopterDto> getHelicopters() {
         return helicopterMapper.mapToHelicopterDtoList(helicopterDatabase.getHelicopters());
+    }
+    @RequestMapping(method = RequestMethod.POST, value = "/rentHelicopter")
+    public void rentHelicopter(@RequestParam Long helicopterId, @RequestParam Long userId) {
+        helicopterDatabase.rentHelicopter(helicopterId,userId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/returnHelicopter")
+    public void returnCar(@RequestParam Long helicopterId, @RequestParam Long userId) {
+        helicopterDatabase.returnHelicopter(helicopterId,userId);
     }
 }

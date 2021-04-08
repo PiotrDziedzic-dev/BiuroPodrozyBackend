@@ -9,4 +9,6 @@ public interface BusRepository extends CrudRepository<Bus, Long> {
 
     @Override
     List<Bus> findAll();
+
+    Bus findBusByBusId(Long busID);
 }

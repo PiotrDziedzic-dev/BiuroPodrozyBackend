@@ -1,14 +1,10 @@
 package com.kodilla.biuro.controller;
 
-import com.kodilla.biuro.domain.BoatDto;
 import com.kodilla.biuro.domain.BusDto;
 import com.kodilla.biuro.mapper.BusMapper;
 import com.kodilla.biuro.service.BusDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +24,17 @@ public class BusController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getBuses")
     public List<BusDto> getBuses() {
-        return busMapper.mapToBusDtoList(busDatabase.geBuses());
+        return busMapper.mapToBusDtoList(busDatabase.getBuses());
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/rentBus")
+    public void rentBus(@RequestParam Long busId, @RequestParam Long userId) {
+        busDatabase.rentBus(busId,userId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/returnBus")
+    public void returnBus(@RequestParam Long busId, @RequestParam Long userId) {
+        busDatabase.returnBus(busId,userId);
     }
 
 

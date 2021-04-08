@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import javax.persistence.*;
 
 @Getter
@@ -15,25 +14,27 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "BUSSES")
-public class Bus {
-
+@Table(name = "USERS")
+public class User {
 
     @Id
     @GeneratedValue
     @NotNull
     @Column
-    private Long busId;
+    private Long userId;
 
     @Column
-    private String brand;
+    private String name;
     @Column
-    private String model;
+    private String surname;
     @Column
-    private Integer yearOfProduction;
+    private Integer pesel;
     @Column
-    private Boolean isAvailable;
+    private Integer phoneNumber;
     @Column
-    private User user;
-
+    private String login;
+    @Column
+    private String password;
+    @Column
+    private String emailAddress;
 }

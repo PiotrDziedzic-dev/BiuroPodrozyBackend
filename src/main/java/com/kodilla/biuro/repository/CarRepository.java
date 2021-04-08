@@ -9,4 +9,6 @@ public interface CarRepository extends CrudRepository<Car, Long>  {
 
     @Override
     List<Car> findAll();
+
+    Car findCarByCarId(Long carId);
 }

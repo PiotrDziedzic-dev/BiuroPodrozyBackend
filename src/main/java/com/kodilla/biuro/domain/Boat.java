@@ -33,5 +33,7 @@ public class Boat {
     private Integer yearOfProduction;
     @Column
     private Boolean isAvailable;
+    @Column
+    private User user;
 
 }

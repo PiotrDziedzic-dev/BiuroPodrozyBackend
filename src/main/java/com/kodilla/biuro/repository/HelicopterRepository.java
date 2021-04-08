@@ -10,4 +10,6 @@ public interface HelicopterRepository extends CrudRepository<Helicopter, Long> {
     @Override
     List<Helicopter> findAll();
 
+    Helicopter findByHelicopterId(Long helicopterId);
+
 }

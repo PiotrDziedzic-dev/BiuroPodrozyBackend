@@ -33,5 +33,7 @@ public class Car {
     private Integer yearOfProduction;
     @Column
     private Boolean isAvailable;
+    @Column
+    private User user;
 
 }

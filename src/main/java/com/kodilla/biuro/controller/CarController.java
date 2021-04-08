@@ -28,4 +28,14 @@ public class CarController {
         return carMapper.mapToCarDtoList(carDatabase.getCars());
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/rentCar")
+    public void rentCar(@RequestParam Long carId, @RequestParam Long userId) {
+        carDatabase.rentCar(carId,userId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/returnCar")
+    public void returnCar(@RequestParam Long carId, @RequestParam Long userId) {
+        carDatabase.returnCar(carId,userId);
+    }
+
 }
