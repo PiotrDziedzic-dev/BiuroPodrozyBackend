@@ -11,13 +11,17 @@ import java.util.stream.Collectors;
 @Service
 public class HelicopterMapper {
 
+    UserMapper userMapper;
+
     public HelicopterDto mapToHelicopterDto(final Helicopter helicopter) {
         return new HelicopterDto(
                 helicopter.getHelicopterId(),
                 helicopter.getBrand(),
                 helicopter.getModel(),
                 helicopter.getYearOfProduction(),
-                helicopter.getIsAvailable()
+                helicopter.getIsAvailable(),
+                userMapper.mapToUserDto(helicopter.getUser())
+
         );
     }
 
@@ -27,7 +31,8 @@ public class HelicopterMapper {
                 helicopterDto.getBrand(),
                 helicopterDto.getModel(),
                 helicopterDto.getYearOfProduction(),
-                helicopterDto.getIsAvailable()
+                helicopterDto.getIsAvailable(),
+                userMapper.mapToUser(helicopterDto.getUserDto())
         );
     }
 

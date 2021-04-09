@@ -11,13 +11,16 @@ import java.util.stream.Collectors;
 @Service
 public class CarMapper {
 
+    UserMapper userMapper;
+
     public CarDto mapToCarDto(final Car car) {
         return new CarDto(
                 car.getCarId(),
                 car.getBrand(),
                 car.getModel(),
                 car.getYearOfProduction(),
-                car.getIsAvailable()
+                car.getIsAvailable(),
+                userMapper.mapToUserDto(car.getUser())
         );
     }
 
@@ -27,7 +30,8 @@ public class CarMapper {
                 carDto.getBrand(),
                 carDto.getModel(),
                 carDto.getYearOfProduction(),
-                carDto.getIsAvailable()
+                carDto.getIsAvailable(),
+                userMapper.mapToUser(carDto.getUserDto())
         );
     }
 

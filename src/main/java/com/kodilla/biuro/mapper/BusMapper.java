@@ -11,13 +11,16 @@ import java.util.stream.Collectors;
 @Service
 public class BusMapper {
 
+    UserMapper userMapper;
+
     public BusDto mapToBusDto(final Bus bus) {
         return new BusDto(
                 bus.getBusId(),
                 bus.getBrand(),
                 bus.getModel(),
                 bus.getYearOfProduction(),
-                bus.getIsAvailable()
+                bus.getIsAvailable(),
+                userMapper.mapToUserDto(bus.getUser())
         );
     }
 
@@ -27,7 +30,8 @@ public class BusMapper {
                 busDto.getBrand(),
                 busDto.getModel(),
                 busDto.getYearOfProduction(),
-                busDto.getIsAvailable()
+                busDto.getIsAvailable(),
+                userMapper.mapToUser(busDto.getUserDto())
         );
     }
 

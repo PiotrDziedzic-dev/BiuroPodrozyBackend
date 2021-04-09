@@ -11,13 +11,16 @@ import java.util.stream.Collectors;
 @Service
 public class BoatMapper {
 
+    UserMapper userMapper;
+
     public BoatDto mapToBoatDto(final Boat boat) {
         return new BoatDto(
                 boat.getBoatId(),
                 boat.getBrand(),
                 boat.getModel(),
                 boat.getYearOfProduction(),
-                boat.getIsAvailable()
+                boat.getIsAvailable(),
+                userMapper.mapToUserDto(boat.getUser())
         );
     }
 
@@ -27,7 +30,8 @@ public class BoatMapper {
                 boatDto.getBrand(),
                 boatDto.getModel(),
                 boatDto.getYearOfProduction(),
-                boatDto.getIsAvailable()
+                boatDto.getIsAvailable(),
+                userMapper.mapToUser(boatDto.getUserDto())
         );
     }
 

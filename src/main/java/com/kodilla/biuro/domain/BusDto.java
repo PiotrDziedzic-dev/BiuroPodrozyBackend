@@ -13,5 +13,6 @@ public class BusDto {
     private String model;
     private Integer yearOfProduction;
     private Boolean isAvailable;
+    private UserDto userDto;
 
 }

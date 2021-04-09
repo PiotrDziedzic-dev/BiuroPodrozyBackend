@@ -1,5 +1,6 @@
 package com.kodilla.biuro.domain;
 
+
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,26 +15,22 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "TRIPS")
-public class Trip {
+@Table(name = "INVOICES")
+public class Invoice {
 
 
-    @NotNull
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @NotNull
     @Column
-    private Long tripId;
+    private Long invoiceId;
 
     @Column
     private User user;
     @Column
-    private String country;
+    private Boolean isPadid;
     @Column
-    private Integer expense;
-    @Column
-    private Date beginDate;
-    @Column
-    private Date endingDate;
-    @Column
-    private Boolean past;
+    private Date dateOfTransaction;
+
+
 }
