@@ -19,4 +19,6 @@ public class TripDto {
     private Date beginDate;
     private Date endingDate;
     private Boolean past;
+    private Boolean lastMinute;
+    private Boolean bestSeller;
 }

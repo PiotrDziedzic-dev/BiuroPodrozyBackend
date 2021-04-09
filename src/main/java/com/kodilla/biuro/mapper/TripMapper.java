@@ -22,7 +22,9 @@ public class TripMapper {
             trip.getExpense(),
             trip.getBeginDate(),
             trip.getBeginDate(),
-            trip.getPast()
+            trip.getPast(),
+            trip.getLastMinute(),
+            trip.getBestseller()
         );
     }
 
@@ -34,11 +36,13 @@ public class TripMapper {
                 tripDto.getExpense(),
                 tripDto.getBeginDate(),
                 tripDto.getBeginDate(),
-                tripDto.getPast()
+                tripDto.getPast(),
+                tripDto.getLastMinute(),
+                tripDto.getBestSeller()
         );
     }
 
-    public List<TripDto> mapToCarDtoList(final List<Trip> tripList) {
+    public List<TripDto> mapToTripDtoList(final List<Trip> tripList) {
         return tripList.stream()
                 .map(this::mapToTripDto)
                 .collect(Collectors.toList());

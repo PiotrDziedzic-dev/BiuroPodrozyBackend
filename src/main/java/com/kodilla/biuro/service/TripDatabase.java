@@ -23,4 +23,11 @@ public class TripDatabase {
     public List<Trip> getUserPastTrips(User user) {
         return tripRepository.findTripByUser(user);
     }
+    public List<Trip> getBestsellers() {
+        return tripRepository.retrieveBestsellerTrips();
+    }
+    public List<Trip> getLastMinuteTrips() {
+        return tripRepository.retrieveLastMinuteTrips();
+    }
+
 }

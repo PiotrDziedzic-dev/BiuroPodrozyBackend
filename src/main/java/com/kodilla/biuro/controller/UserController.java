@@ -4,10 +4,8 @@ package com.kodilla.biuro.controller;
 import com.kodilla.biuro.domain.InvoiceDto;
 import com.kodilla.biuro.domain.TripDto;
 import com.kodilla.biuro.domain.UserDto;
-import com.kodilla.biuro.mapper.BoatMapper;
 import com.kodilla.biuro.mapper.TripMapper;
 import com.kodilla.biuro.mapper.UserMapper;
-import com.kodilla.biuro.service.BoatDatabase;
 import com.kodilla.biuro.service.TripDatabase;
 import com.kodilla.biuro.service.UserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getPastTrips")
     public List<TripDto> getPastTrips(@RequestBody UserDto userDto) {
-        return tripMapper.mapToCarDtoList(tripDatabase.getUserPastTrips(userMapper.mapToUser(userDto)));
+        return tripMapper.mapTotripDtoList(tripDatabase.getUserPastTrips(userMapper.mapToUser(userDto)));
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getInvoices")

@@ -9,6 +9,17 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Date;
 
+@NamedNativeQuery(
+        name = "Trip.retrieveBestsellerTrips",
+        query = "SELECT * FROM TRIPS WHERE bestseller = true",
+        resultClass = Trip.class
+)
+@NamedNativeQuery(
+        name = "Trip.retrieveLastMinuteTrips",
+        query = "SELECT * FROM TRIPS WHERE lastMinute = true",
+        resultClass = Trip.class
+)
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -36,4 +47,8 @@ public class Trip {
     private Date endingDate;
     @Column
     private Boolean past;
+    @Column
+    private Boolean lastMinute;
+    @Column
+    private Boolean bestseller;
 }

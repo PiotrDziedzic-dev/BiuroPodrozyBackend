@@ -36,7 +36,6 @@ public class BoatController {
     public void returnBoat(@RequestParam Long boatId, @RequestParam Long userId) {
         boatDatabase.returnBoat(boatId,userId);
     }
-
-
+    
 
 }

@@ -12,7 +12,7 @@ import java.sql.Date;
 public class InvoiceDto {
 
     private Long invoiceId;
-    private User user;
+    private UserDto userDto;
     private Boolean isPadid;
     private Date dateOfTransaction;
 }
