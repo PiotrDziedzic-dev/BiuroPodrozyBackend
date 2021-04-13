@@ -2,12 +2,11 @@ package com.kodilla.biuro.controller;
 
 
 import com.kodilla.biuro.domain.InvoiceDto;
-import com.kodilla.biuro.domain.User;
 import com.kodilla.biuro.domain.UserDto;
 import com.kodilla.biuro.mapper.InvoiceMapper;
 import com.kodilla.biuro.mapper.UserMapper;
-import com.kodilla.biuro.service.InvoiceDatabase;
-import com.kodilla.biuro.service.UserDatabase;
+import com.kodilla.biuro.service.InvoiceDatabaseFacade;
+import com.kodilla.biuro.service.UserDatabaseFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,21 +18,21 @@ import java.util.List;
 public class InvoiceController {
 
     private final InvoiceMapper invoiceMapper;
-    private final InvoiceDatabase invoiceDatabase;
-    private final UserDatabase userDatabase;
+    private final InvoiceDatabaseFacade invoiceDatabaseFacade;
+    private final UserDatabaseFacade userDatabaseFacade;
     private final UserMapper userMapper;
 
     @Autowired
-    public InvoiceController(InvoiceMapper invoiceMapper,InvoiceDatabase invoiceDatabase,UserDatabase userDatabase,UserMapper userMapper ) {
-        this.invoiceDatabase = invoiceDatabase;
+    public InvoiceController(InvoiceMapper invoiceMapper, InvoiceDatabaseFacade invoiceDatabaseFacade, UserDatabaseFacade userDatabaseFacade, UserMapper userMapper ) {
+        this.invoiceDatabaseFacade = invoiceDatabaseFacade;
         this.invoiceMapper = invoiceMapper;
-        this.userDatabase = userDatabase;
+        this.userDatabaseFacade = userDatabaseFacade;
         this.userMapper = userMapper;
 
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getUserInvoices")
     public List<InvoiceDto> getUserInvoices(@RequestBody UserDto userDto) {
-        return invoiceMapper.mapToInvoiceDtoList(invoiceDatabase.getUserInvoices(userMapper.mapToUser(userDto)));
+        return invoiceMapper.mapToInvoiceDtoList(invoiceDatabaseFacade.getUserInvoices(userMapper.mapToUser(userDto)));
     }
 }

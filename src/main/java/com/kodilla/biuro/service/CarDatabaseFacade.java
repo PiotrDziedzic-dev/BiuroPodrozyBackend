@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CarDatabase {
+public class CarDatabaseFacade {
 
     @Autowired
     private CarRepository carRepository;
@@ -22,8 +22,8 @@ public class CarDatabase {
     private UserRepository userRepository;
 
 
-    public List<Car> getCars() {
-        return carRepository.findAll();
+    public List<Car> getAvailableCars() {
+        return carRepository.retrieveAvailableCars();
     }
 
     public void rentCar(Long carId, Long userId) {

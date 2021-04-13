@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BusDatabase {
+public class BusDatabaseFacade {
 
     @Autowired
     BusRepository busRepository;
@@ -20,8 +20,8 @@ public class BusDatabase {
     @Autowired
     UserRepository userRepository;
 
-    public List<Bus> getBuses() {
-        return busRepository.findAll();
+    public List<Bus> getAvailableBuses() {
+        return busRepository.retrieveAvailableBusses();
     }
 
     public void rentBus(Long busId, Long userId) {

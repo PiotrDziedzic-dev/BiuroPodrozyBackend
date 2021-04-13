@@ -1,9 +1,8 @@
 package com.kodilla.biuro.controller;
 
-import com.kodilla.biuro.domain.BoatDto;
 import com.kodilla.biuro.domain.HelicopterDto;
 import com.kodilla.biuro.mapper.HelicopterMapper;
-import com.kodilla.biuro.service.HelicopterDatabase;
+import com.kodilla.biuro.service.HelicopterDatabaseFacade;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,25 +12,25 @@ import java.util.List;
 @CrossOrigin("*")
 public class HelicopterController {
 
-    private final HelicopterDatabase helicopterDatabase;
+    private final HelicopterDatabaseFacade helicopterDatabaseFacade;
     private final HelicopterMapper helicopterMapper;
 
-    public HelicopterController(HelicopterDatabase helicopterDatabase, HelicopterMapper helicopterMapper) {
-        this.helicopterDatabase = helicopterDatabase;
+    public HelicopterController(HelicopterDatabaseFacade helicopterDatabaseFacade, HelicopterMapper helicopterMapper) {
+        this.helicopterDatabaseFacade = helicopterDatabaseFacade;
         this.helicopterMapper = helicopterMapper;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getHelicopters")
     public List<HelicopterDto> getHelicopters() {
-        return helicopterMapper.mapToHelicopterDtoList(helicopterDatabase.getHelicopters());
+        return helicopterMapper.mapToHelicopterDtoList(helicopterDatabaseFacade.getAvailableHelicopters());
     }
     @RequestMapping(method = RequestMethod.POST, value = "/rentHelicopter")
     public void rentHelicopter(@RequestParam Long helicopterId, @RequestParam Long userId) {
-        helicopterDatabase.rentHelicopter(helicopterId,userId);
+        helicopterDatabaseFacade.rentHelicopter(helicopterId,userId);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/returnHelicopter")
     public void returnCar(@RequestParam Long helicopterId, @RequestParam Long userId) {
-        helicopterDatabase.returnHelicopter(helicopterId,userId);
+        helicopterDatabaseFacade.returnHelicopter(helicopterId,userId);
     }
 }

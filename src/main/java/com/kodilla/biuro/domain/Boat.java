@@ -6,9 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-
 import javax.persistence.*;
+
+@NamedNativeQuery(
+        name = "Trip.retrieveAvailableBoats",
+        query = "SELECT * FROM BOATS WHERE isAvailable = true",
+        resultClass = Boat.class
+)
 
 @Getter
 @Setter

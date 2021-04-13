@@ -24,7 +24,8 @@ public class TripMapper {
             trip.getBeginDate(),
             trip.getPast(),
             trip.getLastMinute(),
-            trip.getBestseller()
+            trip.getBestseller(),
+            trip.getRate()
         );
     }
 
@@ -38,7 +39,8 @@ public class TripMapper {
                 tripDto.getBeginDate(),
                 tripDto.getPast(),
                 tripDto.getLastMinute(),
-                tripDto.getBestSeller()
+                tripDto.getBestSeller(),
+                tripDto.getRate()
         );
     }
 

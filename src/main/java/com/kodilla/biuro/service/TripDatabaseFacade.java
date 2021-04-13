@@ -7,11 +7,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class TripDatabase {
+public class TripDatabaseFacade {
 
     @Autowired
     TripRepository tripRepository;
@@ -29,5 +30,9 @@ public class TripDatabase {
     public List<Trip> getLastMinuteTrips() {
         return tripRepository.retrieveLastMinuteTrips();
     }
+    public List<Trip> findTrip(String country, Date startingDate, Date endingDate) {
+        return tripRepository.findingTrip(country,startingDate,endingDate);
+    }
+
 
 }

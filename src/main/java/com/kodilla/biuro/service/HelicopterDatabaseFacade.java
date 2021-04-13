@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class HelicopterDatabase {
+public class HelicopterDatabaseFacade {
 
     @Autowired
     HelicopterRepository helicopterRepository;
@@ -20,8 +20,8 @@ public class HelicopterDatabase {
     @Autowired
     UserRepository userRepository;
 
-    public List<Helicopter> getHelicopters() {
-        return helicopterRepository.findAll();
+    public List<Helicopter> getAvailableHelicopters() {
+        return helicopterRepository.retrieveAvailableHelicopters();
     }
 
     public void rentHelicopter(Long helicopterId, Long userId) {

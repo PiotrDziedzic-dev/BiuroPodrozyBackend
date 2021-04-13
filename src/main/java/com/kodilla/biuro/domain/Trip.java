@@ -19,6 +19,12 @@ import java.sql.Date;
         query = "SELECT * FROM TRIPS WHERE lastMinute = true",
         resultClass = Trip.class
 )
+@NamedNativeQuery(
+        name = "Trip.findingTrip",
+        query = "SELECT * FROM TRIPS WHERE country = :COUNTRY AND beginDate = :STARTINGDATE AND endingDate = :ENDINGDATE",
+        resultClass = Trip.class
+)
+
 
 @Getter
 @Setter
@@ -34,9 +40,6 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long tripId;
-
-    @Column
-    private User user;
     @Column
     private String country;
     @Column
@@ -46,9 +49,8 @@ public class Trip {
     @Column
     private Date endingDate;
     @Column
-    private Boolean past;
-    @Column
     private Boolean lastMinute;
     @Column
     private Boolean bestseller;
+
 }

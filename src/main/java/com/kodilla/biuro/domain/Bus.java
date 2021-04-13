@@ -6,9 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-
 import javax.persistence.*;
+
+@NamedNativeQuery(
+        name = "Trip.retrieveAvailableBuses",
+        query = "SELECT * FROM BUSSES WHERE isAvailable = true",
+        resultClass = Bus.class
+)
 
 @Getter
 @Setter

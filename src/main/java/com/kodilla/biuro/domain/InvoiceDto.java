@@ -13,6 +13,6 @@ public class InvoiceDto {
 
     private Long invoiceId;
     private UserDto userDto;
-    private Boolean isPadid;
+    private Boolean isPaid;
     private Date dateOfTransaction;
 }

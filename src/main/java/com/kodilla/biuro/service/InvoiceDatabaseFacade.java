@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class InvoiceDatabase {
+public class InvoiceDatabaseFacade {
 
     @Autowired
     InvoiceRepossitory invoiceRepossitory;
